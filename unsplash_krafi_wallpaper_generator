@@ -290,7 +290,7 @@ while true; do
 
     # Download a random image for the current query
     filenameimg="${query}_$(date +"%d-%m-%y-%s").jpg"
-    wget -O ~/Pictures/Wallpapers@krafi.info/"$filenameimg" "https://source.unsplash.com/random/$monitor_resolution/?$query" && nitrogen --set-zoom-fill ~/Pictures/Wallpapers@krafi.info/"$filenameimg"
+    wget -O /home/$homeuser/Pictures/Wallpapers@krafi.info/"$filenameimg" "https://source.unsplash.com/random/$monitor_resolution/?$query" && nitrogen --set-zoom-fill /home/$homeuser/Pictures/Wallpapers@krafi.info/"$filenameimg"
   
   
     echo "=================================================================================================="
