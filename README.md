@@ -3,6 +3,7 @@
 
 
 ## Getting started
+####If it show any issue dont forget to create a bug req,,
 
 ### Run this one line and see your wallpaper is changing every 1 min
 
@@ -41,9 +42,6 @@ Do you want to see my output of that command?
 
 # Do you want to Unistall this service completely?
 ```
-sudo systemctl stop unsplash_krafi_wallpaper_generator.service \
-sudo systemctl disable unsplash_krafi_wallpaper_generator.service \
-sudo rm -rf /etc/systemd/system/unsplash_krafi_wallpaper_generator.service \
 sudo rm -rf ~/.local/bin/unsplash_krafi_wallpaper_generator
 ```
 
@@ -53,3 +51,10 @@ sudo rm -rf cd ~/Pictures/Wallpapers@krafi.info/
 ```
 
 # Have a great Life, thank you for using 
+
+<!--
+sudo systemctl stop unsplash_krafi_wallpaper_generator.service \
+sudo systemctl disable unsplash_krafi_wallpaper_generator.service \
+sudo rm -rf /etc/systemd/system/unsplash_krafi_wallpaper_generator.service \
+-->
+
