@@ -16,14 +16,14 @@ open that file change the List of search queries to use or array and run again t
 
 ### Regulations are not correct?
 
-you can find this line at the end of the script
+you can find this line at the top of the script
 
 ```
-wget -O ~/Pictures/Wallpapers@krafi.info/$filename "https://source.unsplash.com/random/1920x1080/?$query"
+monitor_resolution="1920x1080"
 ```
 modify that 1920x1080 to another value...
 
-#### Don't know your monitor resolution?
+Don't know your monitor resolution?
 
 run 
 
