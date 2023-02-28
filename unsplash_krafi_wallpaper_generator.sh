@@ -53,11 +53,11 @@ queries=(
     "Sokcho"
 )
 
-pkexec killall nitrogen variety wallch wallpaperd xfdesktop bgs pywal hsetroot chameleon wallpaper backdrop xfdesktop wally wallpapoz drapes wallmaster wallswap wallchop wallpaper-tray wallpapernator wallpapergui wallutils wallsetter wallpaperviewer wallpaper.sh wallpaperd-py wallpaperd-randr wallpaperclock wpset wallpaper-setter wallpapergnome wallpapoz-cmd swaybg nitrogen-setter fluxbox-setbg qiv xloadimage gtk-redshift xsetbg fbsetbg hsetroot-gtk setroot wpcd wallpapergtk esetroot wmsetbg jsetroot xli xwallpaper xwinwrap display xv feh-cam xplanet xsetroot xpmroot gsetroot e16keyedit haba wmphoto wmwallpaper wmxpmroot wmpuzzle wmwebcam wmthemes xwp camE camE-config xsetbg-root xvtsetbg xli-root gqview xsetbg-xfce wmwave viper-bg ctwm-root wmsetbg-slitaz eminus xsri wmgrabimage wmsetbg-pixmap icewmbg rasdaemon wmtv cmusbg mgp tulip dr14tm fbi background stsetbg xsetroot-tk tkdesk wmforkplop epiwm displayq wmgua pcmanfm-qt xwallpaper-manage qiv-slideshow svkbd wmblob gsetroot-gtk2 wmifs wmsystemtray xvattr icontool wmbackground wmxmms2 wnckpager-background wmpinboard wmbiff qiv-command wmapm wmconvert camstream xautomata
+pkexec killall variety wallch wallpaperd xfdesktop bgs pywal hsetroot chameleon wallpaper backdrop xfdesktop wally wallpapoz drapes wallmaster feh wallswap wallchop wallpaper-tray wallpapernator wallpapergui wallutils wallsetter wallpaperviewer wallpaper.sh wallpaperd-py wallpaperd-randr wallpaperclock wpset wallpaper-setter wallpapergnome wallpapoz-cmd swaybg nitrogen-setter fluxbox-setbg qiv xloadimage gtk-redshift xsetbg fbsetbg hsetroot-gtk setroot wpcd wallpapergtk esetroot wmsetbg jsetroot xli xwallpaper xwinwrap display xv feh-cam xplanet xsetroot xpmroot gsetroot e16keyedit haba wmphoto wmwallpaper wmxpmroot wmpuzzle wmwebcam wmthemes xwp camE camE-config xsetbg-root xvtsetbg xli-root gqview xsetbg-xfce wmwave viper-bg ctwm-root wmsetbg-slitaz eminus xsri wmgrabimage wmsetbg-pixmap icewmbg rasdaemon wmtv cmusbg mgp tulip dr14tm fbi background stsetbg xsetroot-tk tkdesk wmforkplop epiwm displayq wmgua pcmanfm-qt xwallpaper-manage qiv-slideshow svkbd wmblob gsetroot-gtk2 wmifs wmsystemtray xvattr icontool wmbackground wmxmms2 wnckpager-background wmpinboard wmbiff qiv-command wmapm wmconvert camstream xautomata
 
 echo "3"; sleep 1s; echo "2"; sleep 1s; echo "1"; sleep 1s; echo "Run!"; sleep 2s
 
-feh --randomize --bg-fill ~/Pictures/Wallpapers@krafi.info/* 2>/dev/null
+nitrogen --set-zoom-fill ~/Pictures/Wallpapers@krafi.info/* 2>/dev/null
 
 # Create a directory for storing pictures in the home directory
 mkdir -p ~/Pictures
@@ -130,7 +130,7 @@ fi
  #   echo "=================================================================================================="
  #   echo "=================================================================================================="
  #   echo "======================+                                                    +======================"
- #   echo "======================+    This section is for downloading wget and feh    +======================"
+ #   echo "======================+  This section is for downloading wget and nitrogen +======================"
  #   echo "======================+         Tested on Fedora , ubuntu , arch           +======================"
  #   echo "======================+         Tested on Fedora , ubuntu , arch           +======================"
  #   echo "======================+                                                    +======================"
@@ -152,11 +152,11 @@ if command -v apt-get &> /dev/null; then
         echo "wget is already installed"
     fi
 
-    if ! command -v feh &> /dev/null; then
+    if ! command -v nitrogen &> /dev/null; then
         pkexec apt-get update
-        pkexec apt-get install feh
+        pkexec apt-get install nitrogen
     else
-        echo "feh is already installed"
+        echo "nitrogen is already installed"
     fi
 
 elif command -v yum &> /dev/null; then
@@ -167,10 +167,10 @@ elif command -v yum &> /dev/null; then
         echo "wget is already installed"
     fi
 
-    if ! command -v feh &> /dev/null; then
-        pkexec yum install feh
+    if ! command -v nitrogen &> /dev/null; then
+        pkexec yum install nitrogen
     else
-        echo "feh is already installed"
+        echo "nitrogen is already installed"
     fi
 
 elif command -v pacman &> /dev/null; then
@@ -181,10 +181,10 @@ elif command -v pacman &> /dev/null; then
         echo "wget is already installed"
     fi
 
-    if ! command -v feh &> /dev/null; then
-        pkexec pacman -Syu feh
+    if ! command -v nitrogen &> /dev/null; then
+        pkexec pacman -Syu nitrogen
     else
-        echo "feh is already installed"
+        echo "nitrogen is already installed"
     fi
 
 elif command -v dnf &> /dev/null; then
@@ -195,17 +195,17 @@ elif command -v dnf &> /dev/null; then
         echo "wget is already installed"
     fi
 
-    if ! command -v feh &> /dev/null; then
-        pkexec dnf install feh
+    if ! command -v nitrogen &> /dev/null; then
+        pkexec dnf install nitrogen
     else
-        echo "feh is already installed"
+        echo "nitrogen is already installed"
     fi
 
 else
     echo "Unable to detect package manager"
     echo "This error is coming from line 143"
     echo "Still wana fix this code"
-    echo "install feh and wget manually "
+    echo "install nitrogen and wget manually "
     echo "remove 'exit 1' this one from line 143"
     
     exit 1
@@ -290,7 +290,8 @@ do
     # Download a random image for the current query
     filename="$(date +"%d-%m-%y-%s").jpg"
     wget -O ~/Pictures/Wallpapers@krafi.info/$filename "https://source.unsplash.com/random/$monitor_resolution/?$query"
-    feh --bg-fill ~/Pictures/Wallpapers@krafi.info/$filename
+    nitrogen --set-zoom-fill ~/Pictures/Wallpapers@krafi.info/$filename
+
 
 
     echo "=================================================================================================="
