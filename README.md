@@ -14,7 +14,7 @@ wget -qO- https://gitlab.com/krafi/unsplash-wallpaper-changer-for-linux/-/raw/ma
 
 open that file change the List of search queries to use or array and run again that file...
 
-### Regulations are not correct?
+### Resolution are not correct?
 
 you can find this line at the top of the script
 

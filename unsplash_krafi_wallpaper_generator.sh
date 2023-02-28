@@ -238,6 +238,11 @@ User=$homeuser
 Group=$homeuser_grop
 ExecStart=/home/$homeuser/.local/bin/unsplash_krafi_wallpaper_generator.sh
 Environment=DISPLAY=:0
+LimitCPU=infinity
+LimitMEMLOCK=infinity
+Type=simple
+Restart=always
+RestartSec=40
 
 
 [Install]
