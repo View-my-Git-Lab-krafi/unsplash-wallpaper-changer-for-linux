@@ -31,7 +31,7 @@ run
 xrandr
 ```
 Do you want to see my output of that command?
-https://paste.rs/kaT
+
 - [ ] [https://paste.rs/kaT](https://paste.rs/kaT)
 
 ## deep documentation on my website coming soon!
