@@ -1,7 +1,7 @@
 #!/bin/bash
 
-echo "This is version 1.2 of the script"
-echo "Its 1.2 , but dont this its beta, its rock solid stable"
+echo "This is version 1.1 of the script"
+echo "Its 1.1 , but dont this its beta, its rock solid stable"
 
     echo "=================================================================================================="
     echo "=================================================================================================="
@@ -60,14 +60,9 @@ feh --randomize --bg-fill ~/Pictures/Wallpapers@krafi.info/* 2>/dev/null
 # Create a directory for storing pictures in the home directory
 mkdir -p ~/Pictures
 
-# Create a directory for storing pictures in the home directory
-mkdir -p /root/Pictures
-
 # Create a directory for storing local binaries in the home directory
 mkdir -p ~/.local/bin/
 
-# Create a directory for storing local binaries in the home directory
-mkdir -p ~/root/.local/bin/
 
 # Get the full path and filename of the currently running script
 fullpath="$(realpath "$0")"
@@ -227,8 +222,9 @@ fi
  #   echo "=================================================================================================="
  #   echo "=================================================================================================="
  #   echo "=================================================================================================="
- 
 
+homeuser="$(whoami)"
+homeuser_group="$(groups)"
 
 # Check if the hello.service file already exists
 if [ ! -f /etc/systemd/system/$filename.service ]; then
@@ -236,15 +232,18 @@ if [ ! -f /etc/systemd/system/$filename.service ]; then
     pkexec sh -c "cat <<EOF > /etc/systemd/system/$filename.service
 [Unit]
 Description= Unsplash Wallpaper generator by Krafi.info
-After=graphical.target
 
 [Service]
-ExecStart=$HOME/.local/bin/$filename
+User=$homeuser
+Group=$homeuser_grop
+ExecStart=/home/$homeuser/.local/bin/unsplash_krafi_wallpaper_generator.sh
+Environment=DISPLAY=:0
+
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=multi-user.target graphical.target
 EOF"
-
+echo "========================================="
     # Reload systemd to make it aware of the new service
     pkexec systemctl daemon-reload
 
@@ -256,7 +255,6 @@ fi
 if ! pkexec systemctl is-active --quiet $filename.service; then
     # Start the service immediately
     echo "systemctl start"
-    echo "========================================="
     pkexec systemctl start $filename.service
 fi
 
@@ -285,8 +283,8 @@ do
     # Download a random image for the current query
     filename="$(date +"%d-%m-%y-%s").jpg"
     wget -O ~/Pictures/Wallpapers@krafi.info/$filename "https://source.unsplash.com/random/$monitor_resolution/?$query"
-    feh --bg-fill /root/Pictures/Wallpapers@krafi.info/$filename
-	mv /root/Pictures/Wallpapers@krafi.info/$filename ~/Pictures/Wallpapers@krafi.info/
+    feh --bg-fill ~/Pictures/Wallpapers@krafi.info/$filename
+
 
     echo "=================================================================================================="
     echo "=================================================================================================="
