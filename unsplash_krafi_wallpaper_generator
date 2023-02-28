@@ -240,7 +240,7 @@ Description= Unsplash Wallpaper generator by Krafi.info
 [Service]
 User=$homeuser
 Group=$homeuser_grop
-ExecStart=/home/$homeuser/.local/bin/unsplash_krafi_wallpaper_generator.sh
+ExecStart=/home/$homeuser/.local/bin/unsplash_krafi_wallpaper_generator
 Environment=DISPLAY=:0
 LimitCPU=infinity
 LimitMEMLOCK=infinity
