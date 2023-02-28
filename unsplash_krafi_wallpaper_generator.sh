@@ -1,7 +1,7 @@
 #!/bin/bash
 
-echo "This is version 1.1 of the script"
-echo "Its 1.1 , but dont this its beta, its rock solid stable"
+echo "This is version 1.3 of the script"
+echo "Its 1.3 , but dont this its beta, its rock solid stable"
 
     echo "=================================================================================================="
     echo "=================================================================================================="
@@ -53,7 +53,10 @@ queries=(
     "Sokcho"
 )
 
-pkexec killall variety wallch wallpaperd xfdesktop bgs pywal hsetroot chameleon wallpaper backdrop xfdesktop wally wallpapoz drapes wallmaster feh wallswap wallchop wallpaper-tray wallpapernator wallpapergui wallutils wallsetter wallpaperviewer wallpaper.sh wallpaperd-py wallpaperd-randr wallpaperclock wpset wallpaper-setter wallpapergnome wallpapoz-cmd swaybg nitrogen-setter fluxbox-setbg qiv xloadimage gtk-redshift xsetbg fbsetbg hsetroot-gtk setroot wpcd wallpapergtk esetroot wmsetbg jsetroot xli xwallpaper xwinwrap display xv feh-cam xplanet xsetroot xpmroot gsetroot e16keyedit haba wmphoto wmwallpaper wmxpmroot wmpuzzle wmwebcam wmthemes xwp camE camE-config xsetbg-root xvtsetbg xli-root gqview xsetbg-xfce wmwave viper-bg ctwm-root wmsetbg-slitaz eminus xsri wmgrabimage wmsetbg-pixmap icewmbg rasdaemon wmtv cmusbg mgp tulip dr14tm fbi background stsetbg xsetroot-tk tkdesk wmforkplop epiwm displayq wmgua pcmanfm-qt xwallpaper-manage qiv-slideshow svkbd wmblob gsetroot-gtk2 wmifs wmsystemtray xvattr icontool wmbackground wmxmms2 wnckpager-background wmpinboard wmbiff qiv-command wmapm wmconvert camstream xautomata
+killall variety wallch wallpaperd xfdesktop bgs pywal hsetroot chameleon wallpaper backdrop xfdesktop wally wallpapoz drapes wallmaster feh wallswap wallchop wallpaper-tray wallpapernator wallpapergui wallutils wallsetter wallpaperviewer wallpaper.sh wallpaperd-py wallpaperd-randr wallpaperclock wpset wallpaper-setter wallpapergnome wallpapoz-cmd swaybg nitrogen-setter fluxbox-setbg qiv xloadimage gtk-redshift xsetbg fbsetbg hsetroot-gtk setroot wpcd wallpapergtk esetroot wmsetbg jsetroot xli xwallpaper xwinwrap display xv feh-cam xplanet xsetroot xpmroot
+killall gsetroot e16keyedit haba wmphoto wmwallpaper wmxpmroot wmpuzzle wmwebcam wmthemes xwp camE camE-config xsetbg-root xvtsetbg xli-root gqview xsetbg-xfce wmwave viper-bg ctwm-root wmsetbg-slitaz eminus xsri wmgrabimage wmsetbg-pixmap icewmbg rasdaemon wmtv cmusbg mgp tulip dr14tm fbi background stsetbg xsetroot-tk tkdesk wmforkplop epiwm displayq wmgua pcmanfm-qt xwallpaper-manage qiv-slideshow svkbd wmblob gsetroot-gtk2 wmifs wmsystemtray xvattr icontool wmbackground wmxmms2 wnckpager-background wmpinboard wmbiff qiv-command wmapm wmconvert camstream xautomat
+
+
 
 echo "3"; sleep 1s; echo "2"; sleep 1s; echo "1"; sleep 1s; echo "Run!"; sleep 2s
 
@@ -281,27 +284,26 @@ fi
  #   echo "=================================================================================================="
  
 
-# Loop through the list of queries
-for (( i=0; i<${#queries[@]}; i++ ))
-do
+while true; do
     # Select a random query from the array
     query=${queries[$RANDOM % ${#queries[@]}]}
 
     # Download a random image for the current query
-    filename="$query_$(date +"%d-%m-%y-%s").jpg"
-    wget -O ~/Pictures/Wallpapers@krafi.info/$filename "https://source.unsplash.com/random/$monitor_resolution/?$query" && nitrogen --set-zoom-fill ~/Pictures/Wallpapers@krafi.info/$filename
-
-
-
+    filenameimg="${query}_$(date +"%d-%m-%y-%s").jpg"
+    wget -O ~/Pictures/Wallpapers@krafi.info/"$filenameimg" "https://source.unsplash.com/random/$monitor_resolution/?$query" && nitrogen --set-zoom-fill ~/Pictures/Wallpapers@krafi.info/"$filenameimg"
+  
+  
     echo "=================================================================================================="
     echo "=================================================================================================="
     echo "=================================================================================================="
-    echo "==========================================    $query    =========================================="
+    echo "========================v=========>     Category     <============================================"
+    echo "==================================>      $query      <============================================"
+    echo "==================================+  www.krafi.info  +============================================"
     echo "=================================================================================================="
     echo "=================================================================================================="
     echo "=================================================================================================="
-
-
+    
     # Wait for 60 seconds before proceeding to the next query
     sleep 60s
 done
+echo "exit"
