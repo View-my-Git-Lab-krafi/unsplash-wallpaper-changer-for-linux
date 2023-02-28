@@ -14,14 +14,14 @@ wget -qO- https://gitlab.com/krafi/unsplash-wallpaper-changer-for-linux/-/raw/ma
 
 open that file change the List of search queries to use or array and run again that file...
 
-### Resolution are not correct?
+### Wallpaper resolution are not correct?
 
 you can find this line at the top of the script
 
 ```
 monitor_resolution="1920x1080"
 ```
-modify that 1920x1080 to another value...
+modify that 1920x1080 to another value... and run
 
 Don't know your monitor resolution?
 
