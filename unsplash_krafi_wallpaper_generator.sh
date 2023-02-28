@@ -12,6 +12,7 @@ echo "Its 1.1 , but dont this its beta, its rock solid stable"
     echo "=================================================================================================="
     echo "=================================================================================================="
 
+monitor_resolution="1920x1080"
 
 # List of search queries to use
 queries=(
@@ -235,9 +236,9 @@ Description= Unsplash Wallpaper generator by Krafi.info
 ExecStart=$HOME/.local/bin/$filename
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=multi-user.target graphical.target
 EOF"
-
+echo "========================================="
     # Reload systemd to make it aware of the new service
     pkexec systemctl daemon-reload
 
@@ -248,6 +249,7 @@ fi
 # Check if the hello.service is currently running
 if ! pkexec systemctl is-active --quiet $filename.service; then
     # Start the service immediately
+    echo "systemctl start"
     pkexec systemctl start $filename.service
 fi
 
@@ -275,7 +277,7 @@ do
 
     # Download a random image for the current query
     filename="$(date +"%d-%m-%y-%s").jpg"
-    wget -O ~/Pictures/Wallpapers@krafi.info/$filename "https://source.unsplash.com/random/1920x1080/?$query"
+    wget -O ~/Pictures/Wallpapers@krafi.info/$filename "https://source.unsplash.com/random/$monitor_resolution/?$query"
     feh --bg-fill ~/Pictures/Wallpapers@krafi.info/$filename
 
 
