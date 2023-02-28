@@ -223,14 +223,14 @@ fi
  
  
 # Select a random query from the 'queries' array and assign it to the 'query' variable
-query=${queries[$RANDOM % ${#queries[@]}]}
+#query=${queries[$RANDOM % ${#queries[@]}]}
 
 # Loop through the list of queries
-for query in "${query[@]}"
+for query in "${queries[@]}"
 do
     # Download the image and set it as the wallpaper
     filename="$(date +"%d-%m-%y-%s").jpg"
-    wget -O ~/Pictures/Wallpapers@krafi.info/$filename "https://source.unsplash.com/random/1920x1080/?$query"
+    wget -O ~/Pictures/Wallpapers@krafi.info/$filename "https://source.unsplash.com/random/1920x1080/?$queries"
     feh --bg-fill ~/Pictures/Wallpapers@krafi.info/$filename
 
     # Wait for 60 seconds before proceeding to the next query
