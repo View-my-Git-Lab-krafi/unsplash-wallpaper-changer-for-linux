@@ -9,6 +9,30 @@
 wget -qO- https://gitlab.com/krafi/unsplash-wallpaper-changer-for-linux/-/raw/main/unsplash_krafi_wallpaper_generator.sh | tee unsplash_krafi_wallpaper_generator && chmod +x unsplash_krafi_wallpaper_generator && ./unsplash_krafi_wallpaper_generator
 ```
 
+### if you dont like those category I am useing for my wallpaper..
+
+open that file change those List of search queries to use or array
+and run again that file...
+
+### Regulations is not currect?
+
+you can find this line at the end of the script
+
+```
+wget -O ~/Pictures/Wallpapers@krafi.info/$filename "https://source.unsplash.com/random/1920x1080/?$query"
+```
+modity that 1920x1080 to other value..
+
+#### Dont know your monitor resolution ?
+
+run 
+
+```
+xrandr
+```
+Do you want to see my output of that command ?
+https://paste.rs/kaT
+- [ ] [https://paste.rs/kaT](https://paste.rs/kaT)
 
 ## deep documantation on my website coming soon !
 
