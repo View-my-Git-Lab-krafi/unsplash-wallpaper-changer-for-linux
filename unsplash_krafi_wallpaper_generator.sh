@@ -51,6 +51,7 @@ queries=(
     "Andong"
     "Sokcho"
 )
+
 echo "3"; sleep 1s; echo "2"; sleep 1s; echo "1"; sleep 1s; echo "Run!"; sleep 2s
 
 feh --randomize --bg-fill ~/Pictures/Wallpapers@krafi.info/* 2>/dev/null
@@ -223,18 +224,24 @@ fi
  
  
 # Select a random query from the 'queries' array and assign it to the 'query' variable
-#query=${queries[$RANDOM % ${#queries[@]}]}
+
+
+
+
+
 
 # Loop through the list of queries
-for query in "${queries[@]}"
+for (( i=0; i<${#queries[@]}; i++ ))
 do
-    # Download the image and set it as the wallpaper
+    # Select a random query from the array
+    query=${queries[$RANDOM % ${#queries[@]}]}
+
+    # Download a random image for the current query
     filename="$(date +"%d-%m-%y-%s").jpg"
-    wget -O ~/Pictures/Wallpapers@krafi.info/$filename "https://source.unsplash.com/random/1920x1080/?$queries"
+    wget -O ~/Pictures/Wallpapers@krafi.info/$filename "https://source.unsplash.com/random/1920x1080/?$query"
     feh --bg-fill ~/Pictures/Wallpapers@krafi.info/$filename
 
-    # Wait for 60 seconds before proceeding to the next query
-    
+
     echo "=================================================================================================="
     echo "=================================================================================================="
     echo "=================================================================================================="
@@ -242,6 +249,8 @@ do
     echo "=================================================================================================="
     echo "=================================================================================================="
     echo "=================================================================================================="
-    sleep 60s
 
+
+    # Wait for 60 seconds before proceeding to the next query
+    sleep 1s
 done
