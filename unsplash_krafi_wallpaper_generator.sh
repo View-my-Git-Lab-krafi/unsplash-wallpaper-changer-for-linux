@@ -288,9 +288,8 @@ do
     query=${queries[$RANDOM % ${#queries[@]}]}
 
     # Download a random image for the current query
-    filename="$(date +"%d-%m-%y-%s").jpg"
-    wget -O ~/Pictures/Wallpapers@krafi.info/$filename "https://source.unsplash.com/random/$monitor_resolution/?$query"
-    nitrogen --set-zoom-fill ~/Pictures/Wallpapers@krafi.info/$filename
+    filename="$query_$(date +"%d-%m-%y-%s").jpg"
+    wget -O ~/Pictures/Wallpapers@krafi.info/$filename "https://source.unsplash.com/random/$monitor_resolution/?$query" && nitrogen --set-zoom-fill ~/Pictures/Wallpapers@krafi.info/$filename
 
 
 
