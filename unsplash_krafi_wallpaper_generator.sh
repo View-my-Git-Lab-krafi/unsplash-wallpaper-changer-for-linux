@@ -1,7 +1,7 @@
 #!/bin/bash
 
-echo "This is version 1.0 of the script"
-echo "Its 1.0 , but dont this its beta, its rock solid stable"
+echo "This is version 1.1 of the script"
+echo "Its 1.1 , but dont this its beta, its rock solid stable"
 
     echo "=================================================================================================="
     echo "=================================================================================================="
