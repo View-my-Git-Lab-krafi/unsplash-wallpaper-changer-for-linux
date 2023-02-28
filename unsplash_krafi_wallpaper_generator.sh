@@ -213,6 +213,50 @@ fi
  #   echo "=================================================================================================="
  #   echo "=================================================================================================="
  #   echo "================+                                                               +================="
+ #   echo "================+                    adding to to systemd                       +================="
+ #   echo "================+                        for autostart                          +================="
+ #   echo "================+                                                               +================="
+ #   echo "================+                                                               +================="
+ #   echo "=================================================================================================="
+ #   echo "=================================================================================================="
+ #   echo "=================================================================================================="
+ #   echo "=================================================================================================="
+ 
+
+
+# Check if the hello.service file already exists
+if [ ! -f /etc/systemd/system/$filename.service ]; then
+    # Create a systemd service to run the script at startup
+    pkexec sh -c "cat <<EOF > /etc/systemd/system/$filename.service
+[Unit]
+Description= Unsplash Wallpaper generator by Krafi.info
+
+[Service]
+ExecStart=$HOME/.local/bin/$filename
+
+[Install]
+WantedBy=multi-user.target
+EOF"
+
+    # Reload systemd to make it aware of the new service
+    pkexec systemctl daemon-reload
+
+    # Enable the service to start automatically at boot time
+    pkexec systemctl enable $filename.service
+fi
+
+# Check if the hello.service is currently running
+if ! pkexec systemctl is-active --quiet $filename.service; then
+    # Start the service immediately
+    pkexec systemctl start $filename.service
+fi
+
+ 
+ #   echo "=================================================================================================="
+ #   echo "=================================================================================================="
+ #   echo "=================================================================================================="
+ #   echo "=================================================================================================="
+ #   echo "================+                                                               +================="
  #   echo "================+                Take random string from that query             +================="
  #   echo "================+             download that image and set as wallpaper          +================="
  #   echo "================+                        keep repeat (loop)                     +================="
@@ -222,13 +266,6 @@ fi
  #   echo "=================================================================================================="
  #   echo "=================================================================================================="
  
- 
-# Select a random query from the 'queries' array and assign it to the 'query' variable
-
-
-
-
-
 
 # Loop through the list of queries
 for (( i=0; i<${#queries[@]}; i++ ))
@@ -252,5 +289,5 @@ do
 
 
     # Wait for 60 seconds before proceeding to the next query
-    sleep 1s
+    sleep 60s
 done
