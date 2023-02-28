@@ -54,7 +54,7 @@ queries=(
 )
 
 killall variety wallch wallpaperd xfdesktop bgs pywal hsetroot chameleon wallpaper backdrop xfdesktop wally wallpapoz drapes wallmaster feh wallswap wallchop wallpaper-tray wallpapernator wallpapergui wallutils wallsetter wallpaperviewer wallpaper.sh wallpaperd-py wallpaperd-randr wallpaperclock wpset wallpaper-setter wallpapergnome wallpapoz-cmd swaybg nitrogen-setter fluxbox-setbg qiv xloadimage gtk-redshift xsetbg fbsetbg hsetroot-gtk setroot wpcd wallpapergtk esetroot wmsetbg jsetroot xli xwallpaper xwinwrap display xv feh-cam xplanet xsetroot xpmroot
-killall gsetroot e16keyedit haba wmphoto wmwallpaper wmxpmroot wmpuzzle wmwebcam wmthemes xwp camE camE-config xsetbg-root xvtsetbg xli-root gqview xsetbg-xfce wmwave viper-bg ctwm-root wmsetbg-slitaz eminus xsri wmgrabimage wmsetbg-pixmap icewmbg rasdaemon wmtv cmusbg mgp tulip dr14tm fbi background stsetbg xsetroot-tk tkdesk wmforkplop epiwm displayq wmgua pcmanfm-qt xwallpaper-manage qiv-slideshow svkbd wmblob gsetroot-gtk2 wmifs wmsystemtray xvattr icontool wmbackground wmxmms2 wnckpager-background wmpinboard wmbiff qiv-command wmapm wmconvert camstream xautomat
+killall gsetroot e16keyedit haba wmphoto wmwallpaper wmxpmroot wmpuzzle wmwebcam wmthemes xwp camE camE-config xsetbg-root xvtsetbg xli-root gqview xsetbg-xfce wmwave viper-bg ctwm-root wmsetbg-slitaz eminus xsri wmgrabimage wmsetbg-pixmap icewmbg rasdaemon wmtv cmusbg mgp tulip dr14tm fbi background stsetbg xsetroot-tk tkdesk wmforkplop epiwm displayq wmgua xwallpaper-manage qiv-slideshow svkbd wmblob gsetroot-gtk2 wmifs wmsystemtray xvattr icontool wmbackground wmxmms2 wnckpager-background wmpinboard wmbiff qiv-command wmapm wmconvert camstream xautomat
 
 
 
@@ -221,7 +221,6 @@ fi
  #   echo "================+                                                               +================="
  #   echo "================+                    adding to to systemd                       +================="
  #   echo "================+                        for autostart                          +================="
- #   echo "================+                                                               +================="
  #   echo "================+                                                               +================="
  #   echo "=================================================================================================="
  #   echo "=================================================================================================="
