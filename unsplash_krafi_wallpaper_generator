@@ -14,6 +14,8 @@ echo "Its 1.3 , but dont this its beta, its rock solid stable"
 
 monitor_resolution="1920x1080"
 
+# 60 sec wallpaper will change 
+change_timer="60s"
 # List of search queries to use
 queries=(
     "quran"
@@ -93,7 +95,6 @@ echo "The name of the currently running script is: $filename"
  
  
 # Pause the script or command for 10 seconds before continuing
-sleep 5s
 
 # Check if ~/.local/bin/ exists
 if [ ! -f ~/.local/bin/"$filename" ]; then
@@ -472,15 +473,15 @@ echo "$desktop_env"
  #   echo "=================================================================================================="
  #   echo "=================================================================================================="
  #   echo "=================================================================================================="
- 
 
+homeuser="$(whoami)"
 while true; do
     # Select a random query from the array
     query=${queries[$RANDOM % ${#queries[@]}]}
 
     # Download a random image for the current query
     filenameimg="${query}_$(date +"%d-%m-%y-%s").jpg"
-    wget -O /home/$homeuser/Pictures/Wallpapers@krafi.info/"$filenameimg" "https://source.unsplash.com/random/$monitor_resolution/?$query" && nitrogen --set-zoom-fill /home/$homeuser/Pictures/Wallpapers@krafi.info/"$filenameimg"
+    wget -O /home/"$homeuser"/Pictures/Wallpapers@krafi.info/"$filenameimg" "https://source.unsplash.com/random/"$monitor_resolution"/?$query" && nitrogen --set-zoom-fill /home/"$homeuser"/Pictures/Wallpapers@krafi.info/"$filenameimg"
   
   
     echo "=================================================================================================="
@@ -494,6 +495,6 @@ while true; do
     echo "=================================================================================================="
     
     # Wait for 60 seconds before proceeding to the next query
-    sleep 60s
+    sleep "$change_timer"
 done
 echo "exit"
