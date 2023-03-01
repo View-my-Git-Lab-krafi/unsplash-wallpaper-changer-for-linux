@@ -60,7 +60,7 @@ queries=(
     "Sokcho"
 )
 
-killall variety wallch wallpaperd xfdesktop bgs pywal hsetroot chameleon wallpaper backdrop xfdesktop wally wallpapoz drapes wallmaster feh wallswap wallchop wallpaper-tray wallpapernator wallpapergui wallutils wallsetter wallpaperviewer wallpaper.sh wallpaperd-py wallpaperd-randr wallpaperclock wpset wallpaper-setter wallpapergnome wallpapoz-cmd swaybg nitrogen-setter fluxbox-setbg qiv xloadimage gtk-redshift xsetbg fbsetbg hsetroot-gtk setroot wpcd wallpapergtk esetroot wmsetbg jsetroot xli xwallpaper xwinwrap display xv feh-cam xplanet xsetroot xpmroot 2>/dev/null
+killall variety wallch wallpaperd xfdesktop bgs pywal hsetroot chameleon wallpaper backdrop xfdesktop wally wallpapoz drapes wallmaster feh wallswap wallchop wallpaper-tray wallpapernator wallpapergui wallutils wallsetter wallpaperviewer wallpaper.sh wallpaperd-py wallpaperd-randr wallpaperclock wpset wallpaper-setter wallpapergnome wallpapoz-cmd swaybg fluxbox-setbg qiv xloadimage gtk-redshift xsetbg fbsetbg hsetroot-gtk setroot wpcd wallpapergtk esetroot wmsetbg jsetroot xli xwallpaper xwinwrap display xv feh-cam xplanet xsetroot xpmroot 2>/dev/null
 killall gsetroot e16keyedit haba wmphoto wmwallpaper wmxpmroot wmpuzzle wmwebcam wmthemes xwp camE camE-config xsetbg-root xvtsetbg xli-root gqview xsetbg-xfce wmwave viper-bg ctwm-root wmsetbg-slitaz eminus xsri wmgrabimage wmsetbg-pixmap icewmbg rasdaemon wmtv cmusbg mgp tulip dr14tm fbi background stsetbg xsetroot-tk tkdesk wmforkplop epiwm displayq wmgua xwallpaper-manage qiv-slideshow svkbd wmblob gsetroot-gtk2 wmifs wmsystemtray xvattr icontool wmbackground wmxmms2 wnckpager-background wmpinboard wmbiff qiv-command wmapm wmconvert camstream xautomat 2>/dev/null
 
 
@@ -70,7 +70,8 @@ echo "3"; sleep 1s; echo "2"; sleep 1s; echo "1"; sleep 1s; echo "Run!"; sleep 2
 homeuser="$(whoami)"
 homeuser_group="$(groups)"
 
-nitrogen --set-zoom-fill /home/"$homeuser"/Pictures/Wallpapers@krafi.info/* 2>/dev/null
+nitrogen --restore 2>/dev/null
+echo "file://$/home/'$homeuser'/Pictures/Wallpapers@krafi.info/" >> ~/.config/nitrogen/bg-saved.cfg 2>/dev/null
 
 # Create a directory for storing pictures in the home directory
 mkdir -p /home/"$homeuser"/Pictures
@@ -143,8 +144,8 @@ fi
  #   echo "=================================================================================================="
  #   echo "======================+                                                    +======================"
  #   echo "======================+  This section is for downloading wget and nitrogen +======================"
- #   echo "======================+         Tested on Fedora , ubuntu , arch           +======================"
- #   echo "======================+         Tested on Fedora , ubuntu , arch           +======================"
+ #   echo "======================+         Tested on Fedora , Ubuntu , Arch           +======================"
+ #   echo "======================+        Tested on Gnome , KDE , i3 , unity          +======================"
  #   echo "======================+                                                    +======================"
  #   echo "=================================================================================================="
  #   echo "=================================================================================================="
@@ -451,12 +452,12 @@ fi
 # Check if i3 is installed on the system
 if [ -x "$(command -v i3)" ]; then
   # Check if the exec command exists in the i3 configuration file
-  if grep -q '^exec --no-startup-id /home/"$homeuser"/.local/bin/unsplash_krafi_wallpaper_generator.sh$' /home/"$homeuser"/.config/i3/config; then
+  if grep -q '^exec --no-startup-id ~/.local/bin/unsplash_krafi_wallpaper_generator' /home/"$homeuser"/.config/i3/config; then
     echo "The exec command already exists in the i3 configuration file."
   else
     # Add the exec command to the i3 configuration file
     echo "Adding the exec command to the i3 configuration file..."
-    echo 'exec --no-startup-id /home/"$homeuser"/.local/bin/unsplash_krafi_wallpaper_generator.sh' >> /home/"$homeuser"/.config/i3/config
+    echo 'exec --no-startup-id ~/.local/bin/unsplash_krafi_wallpaper_generator' >> /home/"$homeuser"/.config/i3/config
   fi
 else
   echo "i3 is not installed on your system."
