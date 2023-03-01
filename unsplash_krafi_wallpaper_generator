@@ -1,7 +1,7 @@
 #!/bin/bash
 
-echo "This is version 1.3 of the script"
-echo "Its 1.3 , but dont this its beta, its rock solid stable"
+echo "This is version 1.5 of the script"
+echo "Its 1.5 , but dont this its beta, its rock solid stable"
 
     echo "=================================================================================================="
     echo "=================================================================================================="
@@ -62,13 +62,13 @@ killall gsetroot e16keyedit haba wmphoto wmwallpaper wmxpmroot wmpuzzle wmwebcam
 
 echo "3"; sleep 1s; echo "2"; sleep 1s; echo "1"; sleep 1s; echo "Run!"; sleep 2s
 
-nitrogen --set-zoom-fill ~/Pictures/Wallpapers@krafi.info/* 2>/dev/null
+nitrogen --set-zoom-fill /home/"$homeuser"/Pictures/Wallpapers@krafi.info/* 2>/dev/null
 
 # Create a directory for storing pictures in the home directory
-mkdir -p ~/Pictures
+mkdir -p /home/"$homeuser"/Pictures
 
 # Create a directory for storing local binaries in the home directory
-mkdir -p ~/.local/bin/
+mkdir -p /home/"$homeuser"/.local/bin/
 
 
 # Get the full path and filename of the currently running script
@@ -85,8 +85,8 @@ echo "The name of the currently running script is: $filename"
  #   echo "=================================================================================================="
  #   echo "================+                                                               +================="
  #   echo "================+    This section is for installing this file on yor system     +================="
- #   echo "================+                   it make a copy of this file to              +================="
- #   echo "================+                        ~/.local/bin/$filname                  +================="
+ #   echo "================+                it make a copy of this file to                 +================="
+ #   echo "================+            /home/"$homeuser"/.local/bin/$filname              +================="
  #   echo "================+                                                               +================="
  #   echo "=================================================================================================="
  #   echo "=================================================================================================="
@@ -96,35 +96,35 @@ echo "The name of the currently running script is: $filename"
  
 # Pause the script or command for 10 seconds before continuing
 
-# Check if ~/.local/bin/ exists
-if [ ! -f ~/.local/bin/"$filename" ]; then
-    # Check if the script is already running from ~/.local/bin
+# Check if /home/"$homeuser"/.local/bin/ exists
+if [ ! -f /home/"$homeuser"/.local/bin/"$filename" ]; then
+    # Check if the script is already running from /home/"$homeuser"/.local/bin
     if [ "$(dirname "$fullpath")" != "$HOME/.local/bin" ]; then
-        echo "Creating ~/.local/bin/$filename"
+        echo "Creating /home/"$homeuser"/.local/bin/$filename"
         # Create the directory if it doesn't exist
-        mkdir -p ~/.local/bin
-        # Copy this script to ~/.local/bin/xyz.sh
-        cp "$fullpath" ~/.local/bin/"$filename"
+        mkdir -p /home/"$homeuser"/.local/bin
+        # Copy this script to /home/"$homeuser"/.local/bin/xyz.sh
+        cp "$fullpath" /home/"$homeuser"/.local/bin/"$filename"
         
         # Make the file executable if it isn't already
-        if [[ $(stat -c '%a' ~/.local/bin/"$filename") != "755" ]]; then
+        if [[ $(stat -c '%a' /home/"$homeuser"/.local/bin/"$filename") != "755" ]]; then
             # Check if pkexec is available, and if so, use it to set the file mode
             if command -v pkexec >/dev/null 2>&1; then
-                pkexec chmod +x ~/.local/bin/"$filename"
+                pkexec chmod +x /home/"$homeuser"/.local/bin/"$filename"
             else
                 # Otherwise, try to set the file mode using sudo (if available)
                 if command -v sudo >/dev/null 2>&1; then
-                    sudo chmod +x ~/.local/bin/"$filename"
+                    sudo chmod +x /home/"$homeuser"/.local/bin/"$filename"
                 else
-                    echo "Could not set file mode for ~/.local/bin/$filename. Please set it manually."
+                    echo "Could not set file mode for /home/"$homeuser"/.local/bin/$filename. Please set it manually."
                 fi
             fi
         fi
     else
-        echo "The script is already running from the ~/.local/bin directory. Skipping copy to prevent infinite loop."
+        echo "The script is already running from the /home/"$homeuser"/.local/bin directory. Skipping copy to prevent infinite loop."
     fi
 else
-    echo "File ~/.local/bin/$filename already exists. Skipping copy."
+    echo "File /home/"$homeuser"/.local/bin/$filename already exists. Skipping copy."
 fi
 
 
@@ -144,7 +144,7 @@ fi
  #   echo "=================================================================================================="
 
 # Create the directory for the wallpapers wallpaper
-mkdir -p ~/Pictures/Wallpapers@krafi.info
+mkdir -p /home/"$homeuser"/Pictures/Wallpapers@krafi.info
 
 # Detect package manager and install required packages
 if command -v apt-get &> /dev/null; then
@@ -276,12 +276,12 @@ This is a block comment.
 homeuser="$(whoami)"
 homeuser_group="$(groups)"
 desktop_env="unknown"
-
+mkdir -p /home/"$homeuser"/.config/autostart/
 # Check for GNOME desktop environment
 if [ -n "$(command -v gnome-shell)" ]; then
   desktop_env="g"
   		
-cat <<EOF > ~/.config/autostart/$filename.desktop
+cat <<EOF > /home/"$homeuser"/.config/autostart/$filename.desktop
   
 [Desktop Entry]
 Type=Application
@@ -295,15 +295,15 @@ EOF
 
 
 # Check if the desktop file exists in the autostart folder
-if [ -e ~/.config/autostart/"$filename.desktop" ]
+if [ -e /home/"$homeuser"/.config/autostart/"$filename.desktop" ]
 then
   # Check if the executable permission is already set for the file
-  if [ -x ~/.config/autostart/"$filename.desktop" ]
+  if [ -x /home/"$homeuser"/.config/autostart/"$filename.desktop" ]
   then
     echo "Executable permission already set for $filename.desktop"
   else
     # Set the executable permission using pkexec
-    pkexec chmod +x ~/.config/autostart/"$filename.desktop"
+    pkexec chmod +x /home/"$homeuser"/.config/autostart/"$filename.desktop"
     echo "Executable permission set for $filename.desktop"
   fi
 else
@@ -317,8 +317,8 @@ fi
 # Check for KDE desktop environment
 if [ -n "$(command -v startkde)" ]; then
   desktop_env="k"
-
-cat <<EOF > ~/.kde4/Autostart/$filename.desktop
+# /home/"$homeuser"/.config/autostart/
+cat <<EOF > /home/"$homeuser"/.kde4/Autostart/$filename.desktop
 
 [Desktop Entry]
 Type=Application
@@ -331,15 +331,15 @@ Comment=My program that starts automatically unsplash random wallpaper
 EOF
 
 # Check if the desktop file exists in the KDE 4 autostart folder
-if [ -e ~/.kde4/Autostart/"$filename.desktop" ]
+if [ -e /home/"$homeuser"/.kde4/Autostart/"$filename.desktop" ]
 then
   # Check if the executable permission is already set for the file
-  if [ -x ~/.kde4/Autostart/"$filename.desktop" ]
+  if [ -x /home/"$homeuser"/.kde4/Autostart/"$filename.desktop" ]
   then
     echo "Executable permission already set for $filename.desktop"
   else
     # Set the executable permission using pkexec
-    pkexec chmod +x ~/.kde4/Autostart/"$filename.desktop"
+    pkexec chmod +x /home/"$homeuser"/.kde4/Autostart/"$filename.desktop"
     echo "Executable permission set for $filename.desktop"
   fi
 else
@@ -352,7 +352,7 @@ fi
 if [ -n "$(command -v xfce4-session)" ]; then
   desktop_env="x"
   
-cat <<EOF > ~/.config/autostart/$filename.desktop
+cat <<EOF > /home/"$homeuser"/.config/autostart/$filename.desktop
 [Desktop Entry]
 Type=Application
 Exec=/home/$homeuser/.local/bin/unsplash_krafi_wallpaper_generator
@@ -367,15 +367,15 @@ EOF
 
 
 # Check if the desktop file exists in the autostart folder
-if [ -e ~/.config/autostart/"$filename.desktop" ]
+if [ -e /home/"$homeuser"/.config/autostart/"$filename.desktop" ]
 then
   # Check if the executable permission is already set for the file
-  if [ -x ~/.config/autostart/"$filename.desktop" ]
+  if [ -x /home/"$homeuser"/.config/autostart/"$filename.desktop" ]
   then
     echo "Executable permission already set for $filename.desktop"
   else
     # Set the executable permission using pkexec
-    pkexec chmod +x ~/.config/autostart/"$filename.desktop"
+    pkexec chmod +x /home/"$homeuser"/.config/autostart/"$filename.desktop"
     echo "Executable permission set for $filename.desktop"
   fi
 else
@@ -388,7 +388,7 @@ fi
 if [ -n "$(command -v cinnamon-session)" ]; then
   desktop_env="c"
   
-cat <<EOF > ~/.config/autostart/$filename.desktop
+cat <<EOF > /home/"$homeuser"/.config/autostart/$filename.desktop
 [Desktop Entry]
 Type=Application
 Exec=/home/$homeuser/.local/bin/unsplash_krafi_wallpaper_generator
@@ -398,7 +398,7 @@ X-GNOME-Autostart-enabled=true
 Name=unsplash_krafi_wallpaper_generator
 Comment=My program that starts automatically unsplash random wallpaper
 EOF
-pkexec chmod +x ~/.config/autostart/$filename.desktop
+pkexec chmod +x /home/"$homeuser"/.config/autostart/$filename.desktop
 
 fi
 
@@ -406,7 +406,7 @@ fi
 if [ "$desktop_env" = "unknown" ]; then
 desktop_env="n"
 
-cat <<EOF > ~/.config/autostart/$filename.desktop
+cat <<EOF > /home/"$homeuser"/.config/autostart/$filename.desktop
 [Desktop Entry]
 Type=Application
 Exec=/home/$homeuser/.local/bin/unsplash_krafi_wallpaper_generator
@@ -421,15 +421,15 @@ EOF
 # Set the filename variable to the name of the desktop file
 
 # Check if the desktop file exists in the autostart folder
-if [ -e ~/.config/autostart/$filename.desktop ]
+if [ -e /home/"$homeuser"/.config/autostart/$filename.desktop ]
 then
   # Check if the executable permission is already set for the file
-  if [ -x ~/.config/autostart/$filename.desktop ]
+  if [ -x /home/"$homeuser"/.config/autostart/$filename.desktop ]
   then
     echo "Executable permission already set for $filename.desktop"
   else
     # Set the executable permission using pkexec
-    pkexec chmod +x ~/.config/autostart/$filename.desktop
+    pkexec chmod +x /home/"$homeuser"/.config/autostart/$filename.desktop
     echo "Executable permission set for $filename.desktop"
   fi
 else
@@ -443,12 +443,12 @@ fi
 # Check if i3 is installed on the system
 if [ -x "$(command -v i3)" ]; then
   # Check if the exec command exists in the i3 configuration file
-  if grep -q '^exec --no-startup-id ~/.local/bin/unsplash_krafi_wallpaper_generator.sh$' ~/.config/i3/config; then
+  if grep -q '^exec --no-startup-id /home/"$homeuser"/.local/bin/unsplash_krafi_wallpaper_generator.sh$' /home/"$homeuser"/.config/i3/config; then
     echo "The exec command already exists in the i3 configuration file."
   else
     # Add the exec command to the i3 configuration file
     echo "Adding the exec command to the i3 configuration file..."
-    echo 'exec --no-startup-id ~/.local/bin/unsplash_krafi_wallpaper_generator.sh' >> ~/.config/i3/config
+    echo 'exec --no-startup-id /home/"$homeuser"/.local/bin/unsplash_krafi_wallpaper_generator.sh' >> /home/"$homeuser"/.config/i3/config
   fi
 else
   echo "i3 is not installed on your system."
@@ -481,7 +481,7 @@ while true; do
 
     # Download a random image for the current query
     filenameimg="${query}_$(date +"%d-%m-%y-%s").jpg"
-    wget -O /home/"$homeuser"/Pictures/Wallpapers@krafi.info/"$filenameimg" "https://source.unsplash.com/random/"$monitor_resolution"/?$query" && nitrogen --set-zoom-fill /home/"$homeuser"/Pictures/Wallpapers@krafi.info/"$filenameimg"
+    wget -O /home/"$homeuser"/Pictures/Wallpapers@krafi.info/"$filenameimg" "https://source.unsplash.com/random/"$monitor_resolution"/?"$query"" && nitrogen --set-zoom-fill /home/"$homeuser"/Pictures/Wallpapers@krafi.info/"$filenameimg"
   
   
     echo "=================================================================================================="
