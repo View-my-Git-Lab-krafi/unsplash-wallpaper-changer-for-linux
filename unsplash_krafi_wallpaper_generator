@@ -12,14 +12,15 @@ echo "Its 1.5 , but dont this its beta, its rock solid stable"
     echo "=================================================================================================="
     echo "=================================================================================================="
 
-# Set the maximum size of the directory in GB
-max_size_gb=9
 
 # Set the monitor resolution 
 monitor_resolution="1920x1080"
 
 # 60 sec wallpaper will change 
-change_timer="60s"
+change_timer="30s"
+
+# Set the maximum size of the directory in GB
+max_size_gb=9
 
 # List of search queries to use
 queries=(
@@ -71,7 +72,7 @@ homeuser="$(whoami)"
 homeuser_group="$(groups)"
 
 nitrogen --restore 2>/dev/null
-echo "file://$/home/'$homeuser'/Pictures/Wallpapers@krafi.info/" >> ~/.config/nitrogen/bg-saved.cfg 2>/dev/null
+echo "file://$/home/'$homeuser'/Pictures/Wallpapers@krafi.info/" > ~/.config/nitrogen/bg-saved.cfg 2>/dev/null
 
 # Create a directory for storing pictures in the home directory
 mkdir -p /home/"$homeuser"/Pictures
