@@ -272,94 +272,170 @@ fi
 This is a block comment.
   ' 
 
-
+homeuser="$(whoami)"
+homeuser_group="$(groups)"
 desktop_env="unknown"
 
 # Check for GNOME desktop environment
 if [ -n "$(command -v gnome-shell)" ]; then
   desktop_env="g"
-		"cat <<EOF > ~/.config/autostart/$filename.desktop
+  		
+cat <<EOF > ~/.config/autostart/$filename.desktop
   
-		[Desktop Entry]
-		Type=Application
-		Exec=/home/$homeuser/.local/bin/unsplash_krafi_wallpaper_generator
-		Hidden=false
-		NoDisplay=false
-		X-GNOME-Autostart-enabled=true
-		Name=unsplash_krafi_wallpaper_generator
-		Comment=My program that starts automatically unsplash random wallpaper
-		EOF"
-		pkexec chmod +x ~/.config/autostart/$filename.desktop
+[Desktop Entry]
+Type=Application
+Exec=/home/$homeuser/.local/bin/unsplash_krafi_wallpaper_generator
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name=unsplash_krafi_wallpaper_generator
+Comment=My program that starts automatically unsplash random wallpaper
+EOF
+
+
+# Check if the desktop file exists in the autostart folder
+if [ -e ~/.config/autostart/"$filename.desktop" ]
+then
+  # Check if the executable permission is already set for the file
+  if [ -x ~/.config/autostart/"$filename.desktop" ]
+  then
+    echo "Executable permission already set for $filename.desktop"
+  else
+    # Set the executable permission using pkexec
+    pkexec chmod +x ~/.config/autostart/"$filename.desktop"
+    echo "Executable permission set for $filename.desktop"
+  fi
+else
+  echo "$filename.desktop not found in autostart folder"
+fi
+
+
 
 fi
 
 # Check for KDE desktop environment
 if [ -n "$(command -v startkde)" ]; then
   desktop_env="k"
-  		"cat <<EOF > ~/.kde4/Autostart/$filename.desktop
-  
-		[Desktop Entry]
-		Type=Application
-		Exec=/home/$homeuser/.local/bin/unsplash_krafi_wallpaper_generator
-		Hidden=false
-		NoDisplay=false
-		X-KDE-autostart-enabled=true
-		Name=unsplash_krafi_wallpaper_generator
-		Comment=My program that starts automatically unsplash random wallpaper
-		EOF"
-		pkexec chmod +x ~/.kde4/Autostart/$filename.desktop
+
+cat <<EOF > ~/.kde4/Autostart/$filename.desktop
+
+[Desktop Entry]
+Type=Application
+Exec=/home/$homeuser/.local/bin/unsplash_krafi_wallpaper_generator
+Hidden=false
+NoDisplay=false
+X-KDE-autostart-enabled=true
+Name=unsplash_krafi_wallpaper_generator
+Comment=My program that starts automatically unsplash random wallpaper
+EOF
+
+# Check if the desktop file exists in the KDE 4 autostart folder
+if [ -e ~/.kde4/Autostart/"$filename.desktop" ]
+then
+  # Check if the executable permission is already set for the file
+  if [ -x ~/.kde4/Autostart/"$filename.desktop" ]
+  then
+    echo "Executable permission already set for $filename.desktop"
+  else
+    # Set the executable permission using pkexec
+    pkexec chmod +x ~/.kde4/Autostart/"$filename.desktop"
+    echo "Executable permission set for $filename.desktop"
+  fi
+else
+  echo "$filename.desktop not found in KDE 4 autostart folder"
+fi
 
 fi
 
 # Check for XFCE desktop environment
 if [ -n "$(command -v xfce4-session)" ]; then
   desktop_env="x"
-  		"cat <<EOF > ~/.config/autostart/$filename.desktop
   
-		[Desktop Entry]
-		Type=Application
-		Exec=/home/$homeuser/.local/bin/unsplash_krafi_wallpaper_generator
-		Hidden=false
-		NoDisplay=false
-		X-XFCE-Autostart-enabled=true
-		Name=unsplash_krafi_wallpaper_generator
-		Comment=My program that starts automatically unsplash random wallpaper
-		EOF"
-		pkexec chmod +x ~/.config/autostart/$filename.desktop
+cat <<EOF > ~/.config/autostart/$filename.desktop
+[Desktop Entry]
+Type=Application
+Exec=/home/$homeuser/.local/bin/unsplash_krafi_wallpaper_generator
+Hidden=false
+NoDisplay=false
+X-XFCE-Autostart-enabled=true
+Name=unsplash_krafi_wallpaper_generator
+Comment=My program that starts automatically unsplash random wallpaper
+EOF
+
+# Set the filename variable to the name of the desktop file
+
+
+# Check if the desktop file exists in the autostart folder
+if [ -e ~/.config/autostart/"$filename.desktop" ]
+then
+  # Check if the executable permission is already set for the file
+  if [ -x ~/.config/autostart/"$filename.desktop" ]
+  then
+    echo "Executable permission already set for $filename.desktop"
+  else
+    # Set the executable permission using pkexec
+    pkexec chmod +x ~/.config/autostart/"$filename.desktop"
+    echo "Executable permission set for $filename.desktop"
+  fi
+else
+  echo "$filename.desktop not found in autostart folder"
+fi
+
 fi
 
 # Check for Cinnamon desktop environment
 if [ -n "$(command -v cinnamon-session)" ]; then
   desktop_env="c"
-  		"cat <<EOF > ~/.config/autostart/$filename.desktop
   
-		[Desktop Entry]
-		Type=Application
-		Exec=/home/$homeuser/.local/bin/unsplash_krafi_wallpaper_generator
-		Hidden=false
-		NoDisplay=false
-		X-GNOME-Autostart-enabled=true
-		Name=unsplash_krafi_wallpaper_generator
-		Comment=My program that starts automatically unsplash random wallpaper
-		EOF"
-		pkexec chmod +x ~/.config/autostart/$filename.desktop
+cat <<EOF > ~/.config/autostart/$filename.desktop
+[Desktop Entry]
+Type=Application
+Exec=/home/$homeuser/.local/bin/unsplash_krafi_wallpaper_generator
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name=unsplash_krafi_wallpaper_generator
+Comment=My program that starts automatically unsplash random wallpaper
+EOF
+pkexec chmod +x ~/.config/autostart/$filename.desktop
+
 fi
 
 # If none of the supported desktop environments are detected, print "n"
 if [ "$desktop_env" = "unknown" ]; then
-  desktop_env="n"
-  		"cat <<EOF > ~/.config/autostart/$filename.desktop
-  
-		[Desktop Entry]
-		Type=Application
-		Exec=/home/$homeuser/.local/bin/unsplash_krafi_wallpaper_generator
-		Hidden=false
-		NoDisplay=false
-		X-GNOME-Autostart-enabled=true
-		Name=unsplash_krafi_wallpaper_generator
-		Comment=My program that starts automatically unsplash random wallpaper
-		EOF"
-		pkexec chmod +x ~/.config/autostart/$filename.desktop
+desktop_env="n"
+
+cat <<EOF > ~/.config/autostart/$filename.desktop
+[Desktop Entry]
+Type=Application
+Exec=/home/$homeuser/.local/bin/unsplash_krafi_wallpaper_generator
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name=unsplash_krafi_wallpaper_generator
+Comment=My program that starts automatically unsplash random wallpaper
+EOF
+
+
+# Set the filename variable to the name of the desktop file
+
+# Check if the desktop file exists in the autostart folder
+if [ -e ~/.config/autostart/$filename.desktop ]
+then
+  # Check if the executable permission is already set for the file
+  if [ -x ~/.config/autostart/$filename.desktop ]
+  then
+    echo "Executable permission already set for $filename.desktop"
+  else
+    # Set the executable permission using pkexec
+    pkexec chmod +x ~/.config/autostart/$filename.desktop
+    echo "Executable permission set for $filename.desktop"
+  fi
+else
+  echo "$filename.desktop not found in autostart folder"
+fi
+
+
 fi
 
 
@@ -372,7 +448,6 @@ if [ -x "$(command -v i3)" ]; then
     # Add the exec command to the i3 configuration file
     echo "Adding the exec command to the i3 configuration file..."
     echo 'exec --no-startup-id ~/.local/bin/unsplash_krafi_wallpaper_generator.sh' >> ~/.config/i3/config
-    pkexec chmod +x ~/add_autostart.sh
   fi
 else
   echo "i3 is not installed on your system."
