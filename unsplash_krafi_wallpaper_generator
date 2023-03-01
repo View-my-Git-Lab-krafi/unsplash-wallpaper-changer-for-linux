@@ -158,15 +158,15 @@ mkdir -p /home/"$homeuser"/Pictures/Wallpapers@krafi.info
 if command -v apt-get &> /dev/null; then
     echo "Detected apt package manager"
     if ! command -v wget &> /dev/null; then
-        pkexec apt-get update
-        pkexec apt-get install wget
+        pkexec apt-get update -y
+        pkexec apt-get install wget -y
     else
         echo "wget is already installed"
     fi
 
     if ! command -v nitrogen &> /dev/null; then
-        pkexec apt-get update
-        pkexec apt-get install nitrogen
+        pkexec apt-get update -y
+        pkexec apt-get install nitrogen -y
     else
         echo "nitrogen is already installed"
     fi
@@ -174,13 +174,13 @@ if command -v apt-get &> /dev/null; then
 elif command -v yum &> /dev/null; then
     echo "Detected yum package manager"
     if ! command -v wget &> /dev/null; then
-        pkexec yum install wget
+        pkexec yum install wget -y
     else
         echo "wget is already installed"
     fi
 
     if ! command -v nitrogen &> /dev/null; then
-        pkexec yum install nitrogen
+        pkexec yum install nitrogen -y
     else
         echo "nitrogen is already installed"
     fi
@@ -188,13 +188,13 @@ elif command -v yum &> /dev/null; then
 elif command -v pacman &> /dev/null; then
     echo "Detected pacman package manager"
     if ! command -v wget &> /dev/null; then
-        pkexec pacman -Syu wget
+        pkexec pacman -Syu wget -y
     else
         echo "wget is already installed"
     fi
 
     if ! command -v nitrogen &> /dev/null; then
-        pkexec pacman -Syu nitrogen
+        pkexec pacman -Syu nitrogen -y
     else
         echo "nitrogen is already installed"
     fi
@@ -202,13 +202,13 @@ elif command -v pacman &> /dev/null; then
 elif command -v dnf &> /dev/null; then
     echo "Detected dnf package manager"
     if ! command -v wget &> /dev/null; then
-        pkexec dnf install wget
+        pkexec dnf install wget -y
     else
         echo "wget is already installed"
     fi
 
     if ! command -v nitrogen &> /dev/null; then
-        pkexec dnf install nitrogen
+        pkexec dnf install nitrogen -y
     else
         echo "nitrogen is already installed"
     fi
@@ -578,3 +578,4 @@ find "$dir_path" -type f -iname '*.jpg' -ctime +"$old_days" -exec rm {} \;
     sleep "$change_timer"
 done
 echo "exit"
+
