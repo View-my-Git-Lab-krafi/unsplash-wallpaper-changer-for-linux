@@ -8,7 +8,7 @@
 if you are using other system ,
 you need to find a way to 
 autostart ~/.local/bin/unsplash_krafi_wallpaper_generator
-and killing any other wallpeper manager that conflict nitrogen
+and kill any other wallpeper manager that conflict nitrogen
 
 ### Run this one line and see your wallpaper is changing every 30s
 
@@ -46,7 +46,30 @@ Do you want to see my output of that command ?
 - [ ] [https://paste.rs/kaT](https://paste.rs/kaT)
 
 ### if you don't like those categories I am using them for my wallpaper...
+queries=(
+    "quran"
+    "russia"
+    "moscow"
+    "cactus"
+    "horror"
+    "nature"
+    "quotes"
+    "technology"
+    "travel"
+    "universe"
+    "3D
+    "islamic"
+    "mathematics"
+    "mosques"
+    "Kaaba"
+    "Linux"
+    "korea"
+    "southkorea"
+    "kazan"
+    "Seoul"
+    "Busan"
 
+)
 open that file change the List of search queries and reinstall that file...
 
 ### All the Download Photos will save into ~/Pictures/Wallpapers@krafi.info/ this directory
