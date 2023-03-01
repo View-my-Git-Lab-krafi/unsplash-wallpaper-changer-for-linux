@@ -62,6 +62,9 @@ killall gsetroot e16keyedit haba wmphoto wmwallpaper wmxpmroot wmpuzzle wmwebcam
 
 echo "3"; sleep 1s; echo "2"; sleep 1s; echo "1"; sleep 1s; echo "Run!"; sleep 2s
 
+homeuser="$(whoami)"
+homeuser_group="$(groups)"
+
 nitrogen --set-zoom-fill /home/"$homeuser"/Pictures/Wallpapers@krafi.info/* 2>/dev/null
 
 # Create a directory for storing pictures in the home directory
@@ -483,6 +486,24 @@ while true; do
     filenameimg="${query}_$(date +"%d-%m-%y-%s").jpg"
     wget -O /home/"$homeuser"/Pictures/Wallpapers@krafi.info/"$filenameimg" "https://source.unsplash.com/random/"$monitor_resolution"/?"$query"" && nitrogen --set-zoom-fill /home/"$homeuser"/Pictures/Wallpapers@krafi.info/"$filenameimg"
   
+
+if pgrep "plasmashell" > /dev/null ; then
+    # KDE Plasma is running, execute the dbus-send script to change the wallpaper
+    dbus-send --session --dest=org.kde.plasmashell --type=method_call /PlasmaShell \
+              org.kde.PlasmaShell.evaluateScript \
+              'string:
+              var Desktops = desktops();
+              for (i=0;i<Desktops.length;i++) {
+                  d = Desktops[i];
+                  d.wallpaperPlugin = "org.kde.image";
+                  d.currentConfigGroup = Array("Wallpaper", "org.kde.image", "General");
+                  d.writeConfig("Image", "/home/'$homeuser'/Pictures/Wallpapers@krafi.info/'$filenameimg'");
+              }'
+else
+    # KDE Plasma is not running
+    echo "KDE Plasma not detected"
+fi
+
   
     echo "=================================================================================================="
     echo "=================================================================================================="
