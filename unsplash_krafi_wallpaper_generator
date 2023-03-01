@@ -12,10 +12,15 @@ echo "Its 1.5 , but dont this its beta, its rock solid stable"
     echo "=================================================================================================="
     echo "=================================================================================================="
 
+# Set the maximum size of the directory in GB
+max_size_gb=9
+
+# Set the monitor resolution 
 monitor_resolution="1920x1080"
 
 # 60 sec wallpaper will change 
 change_timer="60s"
+
 # List of search queries to use
 queries=(
     "quran"
@@ -503,6 +508,60 @@ else
     # KDE Plasma is not running
     echo "KDE Plasma not detected"
 fi
+
+#!/bin/bash
+
+# Set the path to the directory
+dir_path="/path/to/directory"
+
+# Get the list of all files in the directory
+files=$(ls "$dir_path")
+
+# Create an empty array to store file sizes
+sizes=()
+
+# Iterate through the files and store their sizes in the array
+for file in $files; do
+    file_path="$dir_path/$file"
+    if [[ -f "$file_path" ]]; then
+        size=$(du -b "$file_path" | cut -f1)
+        if [[ " ${sizes[@]} " =~ " $size " ]]; then
+            # If a file with the same size already exists, delete the current file
+            rm "$file_path"
+            echo "Deleted $file_path"
+        else
+            sizes+=("$size")
+        fi
+    fi
+done
+
+
+
+# Convert the maximum size to bytes
+max_size_bytes=$((max_size_gb * 1024 * 1024 * 1024))
+
+# Calculate the current size of the directory in bytes
+current_size_bytes=$(du -sb "$dir_path" | cut -f1)
+
+# Delete files until the directory size is less than or equal to the maximum size
+while [[ $current_size_bytes -gt $max_size_bytes ]]; do
+    # Get the oldest file in the directory
+    oldest_file=$(ls -t "$dir_path" | tail -1)
+
+    # Delete the oldest file
+    file_path="$dir_path/$oldest_file"
+    rm "$file_path"
+    echo "Deleted $file_path"
+
+    # Update the current size of the directory
+    current_size_bytes=$(du -sb "$dir_path" | cut -f1)
+done
+
+# Set the number of days for old photos
+old_days=30
+
+# Find and delete files older than specified number of days
+find "$dir_path" -type f -iname '*.jpg' -ctime +"$old_days" -exec rm {} \;
 
   
     echo "=================================================================================================="
