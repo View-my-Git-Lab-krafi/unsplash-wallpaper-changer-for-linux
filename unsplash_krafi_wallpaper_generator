@@ -14,10 +14,10 @@ echo "Its 1.6 , but dont this its beta, its rock solid stable"
 
 
 # Set the monitor resolution 
-monitor_resolution="1920x1080"
+monitor_resolution="1680x1050"
 
 # 60 sec wallpaper will change 
-change_timer="30s"
+change_timer="60s"
 
 # Set the maximum size of the directory in GB
 max_size_gb=9
@@ -217,10 +217,10 @@ elif command -v dnf &> /dev/null; then
 
 else
     echo "Unable to detect package manager"
-    echo "This error is coming from line 143"
+    echo "This error is coming from line 225"
     echo "Still wana fix this code"
     echo "install nitrogen and wget manually "
-    echo "remove 'exit 1' this one from line 143"
+    echo "remove 'exit 1' this one from line 225"
     
     exit 1
 fi
@@ -286,6 +286,8 @@ This is a block comment.
 homeuser="$(whoami)"
 homeuser_group="$(groups)"
 desktop_env="unknown"
+
+
 mkdir -p /home/"$homeuser"/.config/autostart/
 # Check for GNOME desktop environment
 if [ -n "$(command -v gnome-shell)" ]; then
@@ -323,6 +325,7 @@ fi
 
 
 fi
+
 
 # Check for KDE desktop environment
 if [ -n "$(command -v startkde)" ]; then
@@ -511,10 +514,8 @@ else
     echo "KDE Plasma not detected"
 fi
 
-#!/bin/bash
-
 # Set the path to the directory
-dir_path="/path/to/directory"
+dir_path="/home/'$homeuser'/Pictures/Wallpapers@krafi.info/"
 
 # Get the list of all files in the directory
 files=$(ls "$dir_path")
