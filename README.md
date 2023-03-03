@@ -1,6 +1,15 @@
 # unsplash wallpaper changer for linux
 
 
+# ** deep documentation on my website !**
+
+https://krafi.info/my_made_unsplash_auto_wallpaper_changer_linux/index.html 
+
+https://youtu.be/NXjmq5nco8k
+
+- [ ] [www.krafi.info](https://www.krafi.info)
+
+
 ## Getting started
 #### If it show any issue dont forget to create a bug request,, it may take about a min to startup, 
 ##### Tested on Fedora , Ubuntu , Arch . Recomended to use it on i3 , KDE , Gnome , Unity  desktop envirment or window manager.
@@ -77,10 +86,6 @@ open that file change the List of search queries and reinstall that file...
 well, don't worry i have the solution. by defult it will Continue Downloading 9gb than it will start removing old photos by created time on that directory , and alaways try to remove same photo.
 
 But you can Change this limit value  max_size_gb=9 to you can make it 99999999 or 1 and dont forget to reinstall.
-## deep documentation on my website coming soon!
-
-- [ ] [www.krafi.info](https://www.krafi.info)
-
 
 List of dependencies _
 
@@ -120,8 +125,12 @@ I would also appreciate it if you could give us credit by mentioning or referrin
 
 Thank you for your continued support and for selecting our code!
 
-# Have a great Life, thank you for using 
+# ** deep documentation on my website !**
 
+- [ ] [www.krafi.info](https://www.krafi.info)
+
+
+# Have a great Life, thank you for using 
 <!--
 sudo systemctl stop unsplash_krafi_wallpaper_generator.service \
 sudo systemctl disable unsplash_krafi_wallpaper_generator.service \
