@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Copyright (c) 2023 Kazi Ar Rafi. All rights reserved.
+# Distributed under the terms of the GNU General Public License v3 that can be
+# found in the LICENSE file.
+
 echo "This is version 1.6 of the script"
 echo "Its 1.6 , but dont this its beta, its rock solid stable"
 
