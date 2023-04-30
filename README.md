@@ -1,3 +1,7 @@
+
+Please note that this project is maintained on GitLab, and you can find the latest version of the code, as well as updates and bug fixes, at  [https://gitlab.com/krafi/unsplash-wallpaper-changer-for-linux](https://gitlab.com/krafi/unsplash-wallpaper-changer-for-linux) If you encounter any issues while using the application, we encourage you to report them on the GitLab repository so that we can address them as soon as possible.
+
+
 # unsplash wallpaper changer for linux
 
 
